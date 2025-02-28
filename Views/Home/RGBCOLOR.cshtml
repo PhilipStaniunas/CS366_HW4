@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "RGB Color Display";
+}
+
+<h2>RGB Color Display</h2>
+<form method="get">
+    <label>Red: <input type="number" name="red" min="0" max="255"></label>
+    <label>Green: <input type="number" name="green" min="0" max="255"></label>
+    <label>Blue: <input type="number" name="blue" min="0" max="255"></label>
+    <button type="submit">Display</button>
+</form>
+
+@if (ViewData["HexColor"] != null)
+{
+    <p>Color: @ViewData["RGB"]</p>
+    <p>Hex: @ViewData["HexColor"]</p>
+    <div style="width:100px;height:100px;background-color:@ViewData["HexColor"];"></div>
+}
