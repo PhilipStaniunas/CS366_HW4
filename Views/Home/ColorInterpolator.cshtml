@@ -1,0 +1,30 @@
+@model ColorInterpolation
+@{
+    ViewData["Title"] = "Color Interpolator";
+}
+
+<h2>Color Interpolator</h2>
+<form method="post">
+    <label>Start Color: <input asp-for="StartColor" type="text" placeholder="#FF0000"></label>
+    <label>End Color: <input asp-for="EndColor" type="text" placeholder="#00FF00"></label>
+    <label>Steps: <input asp-for="Steps" type="number" min="1"></label>
+    <button type="submit">Interpolate</button>
+</form>
+
+@if (ViewData["Message"] != null)
+{
+    <p style="color: red;">@ViewData["Message"]</p>
+}
+
+@if (Model.InterpolatedColors.Count > 0)
+{
+    <h3>Interpolated Colors:</h3>
+    <table>
+        <tr>
+            @foreach (var color in Model.InterpolatedColors)
+            {
+                <td style="background-color:@color;width:30px;height:30px;"></td>
+            }
+        </tr>
+    </table>
+}
